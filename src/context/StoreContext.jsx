@@ -7,6 +7,8 @@ const StoreContextProvider = (props) =>{
     const [cartItems,setCartItems] = useState({});
 
     const addToCart = (itemId) => {
+
+
  
         if (!cartItems[itemId])
             {
@@ -14,6 +16,8 @@ const StoreContextProvider = (props) =>{
             }
             else{
                 setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+                
+                
             }
 
 
@@ -24,10 +28,19 @@ const StoreContextProvider = (props) =>{
             setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
         }
 
+        const getTotalCartAmount = () =>
+        {
 
-        useEffect(()=>{
-                console.log(cartItems);
-            },[cartItems])
+               let totalAmount = 0;
+               for(const item in cartItems)
+                {
+                    console.log(item);
+                }
+
+        }
+
+
+       
 
         const contextValue = {
 
@@ -35,7 +48,8 @@ const StoreContextProvider = (props) =>{
             cartItems,
             setCartItems,
             addToCart,
-            removeFromCart 
+            removeFromCart,
+            getTotalCartAmount 
   
         }
 
